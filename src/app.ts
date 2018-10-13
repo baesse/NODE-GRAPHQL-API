@@ -1,5 +1,6 @@
 import * as express from 'express'
-
+import * as graphqlHttp from 'express-graphql'
+import schema from './graphql/schema';
 class App{
     public express:express.Application;
     constructor(){
@@ -8,11 +9,10 @@ class App{
     }
 
     private middleware():void{
-        this.express.use('/hello',(req,res,next)=>{
-            res.send({
-                "hello":"hello world"
-            })
-        })
+        this.express.use('/graphql',graphqlHttp({
+            schema:schema,
+            graphiql: true
+        }))
     }
 }
 
