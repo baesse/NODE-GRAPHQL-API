@@ -10,12 +10,11 @@ class App {
         this.middleware();
     }
     middleware() {
-        (req, res, next) => {
+        this.express.use('/graphql', (req, res, next) => {
             req['context'] = {};
             req['context'].db = index_1.default;
             next();
-        };
-        this.express.use('/graphql', graphqlHttp((req) => ({
+        }, graphqlHttp((req) => ({
             schema: schema_1.default,
             graphiql: true,
             context: req['context']
