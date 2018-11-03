@@ -1,7 +1,7 @@
 const commentTypes = `
     type Comment{
         id:ID!
-        commnent:String!
+        comment:String!
         createAt:String!
         updateAt:String!
         user:User!

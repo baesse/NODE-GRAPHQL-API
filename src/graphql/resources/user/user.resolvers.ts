@@ -17,8 +17,7 @@ export const userResolvers = {
     },
 
 	Query: {
-		users: (parent, { first = 10, offset = 10 }, { db }: { db: Dbconnection }, info: GraphQLResolveInfo) => {
-			console.log('bati')
+		users: (parent, { first = 1, offset = 10 }, { db }: { db: Dbconnection }, info: GraphQLResolveInfo) => {		
 			return db.User.findAll({
 				limit: first,
 				offset: offset

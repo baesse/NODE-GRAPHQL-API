@@ -18,10 +18,10 @@ export const postResolvers = {
 		}
 	},
 	Query: {
-		posts: (parent, { first = 10, offset = 10 }, { db }: { db: Dbconnection }, info: GraphQLResolveInfo) => {
+		posts: (parent, { first = 1, offset = 10 }, { db }: { db: Dbconnection }, info: GraphQLResolveInfo) => {
 			return db.Post.findAll({
-				limit: first,
-				offset: offset
+				limit: offset,
+				offset: first
 			}).catch(handleError);
 		},
 		post: (parent, { id }, { db }: { db: Dbconnection }, info: GraphQLResolveInfo) => {
